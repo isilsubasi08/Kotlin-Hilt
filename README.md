@@ -107,4 +107,13 @@ class Instrument @Inject constructor() {
 
 ![generatedComponent](https://github.com/isilay-subasi/Kotlin-Hilt/blob/main/images/generatedcomponent.PNG) 
 
++ Generated Componenet - Hiltteki oluşturulmuş karşılığıdır.
++ Scope - Kapsamları vardır.
+
+> Yukarıdan aşağı doğru gittikçe kapsam daralıyor. Aşağıdan yukarıya gittikçe de kapsam genişliyor. En yukarda uygulama kapsamı vardır.
+
+> Musician sınıfıma gelerek kapsam atayabiliyorum. `@Singleton` diyebilirim.
+
+> En yukardaki bütün uygulama açık olduğu sürece yaşayacak bir kapsamda bunu oluşturuyor. View dersem sadece görünüm gözüktüğü sürece anlamına geliyor. 
+
 

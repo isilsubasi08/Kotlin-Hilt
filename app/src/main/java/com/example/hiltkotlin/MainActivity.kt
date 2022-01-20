@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
 
         myClass.myFunction()
+        myClass.secondFunction()
 
 
 

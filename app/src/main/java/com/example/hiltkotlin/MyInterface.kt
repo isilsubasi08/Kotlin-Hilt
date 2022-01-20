@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 interface MyInterface {
@@ -32,6 +33,7 @@ abstract class MyModule(){
 @Module
 class myClass(){
 
+    @FirstImplementor
     @Singleton
     @Provides
     fun providerFunction() : MyInterface{
@@ -49,4 +51,22 @@ class myClass(){
         return Gson()
     }
 
+    @SecondImplementor
+    @Singleton
+    @Provides
+    fun secondProviderFunction() : MyInterface{
+        return SecondInterfaceImplementor()
+    }
+
 }
+
+
+//Kendi annotationumuzu oluşturuyoruz.
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class FirstImplementor
+
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class SecondImplementor

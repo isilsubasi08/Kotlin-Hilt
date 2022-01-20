@@ -70,3 +70,34 @@ class MyApplication : Application() {
 class MainActivity : AppCompatActivity() 
 ```
 
++ 2 tane injection çeşidimiz vardır.
+  + Field injection  
+  + Constructor injection
+
+Ben uygulamamda initaliaze etmeden sing() metoduna erişmek istiyorum.
+Bunun için sınıftan bir nesne oluşturdum.`@Inject` kullanacağım.
+```
+    //Field Injection
+    @Inject
+    lateinit var lars : Musician
+```
+
+Musician sınıfına da giderek constructor `ınject` yapmam gerekiyor.
+  
+```
+class Musician
+    //Constructor Injection
+    @Inject
+   constructor (instrument: Instrument , band: Band) 
+```
+
+Instrument ve band sınıflarına giderek onları da `inject` yapmam gerekiyor.
+```
+class Band @Inject constructor() {
+}
+```
+```
+class Instrument @Inject constructor() {
+}
+```
+

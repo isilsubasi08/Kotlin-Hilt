@@ -116,4 +116,85 @@ class Instrument @Inject constructor() {
 
 > En yukardaki bütün uygulama açık olduğu sürece yaşayacak bir kapsamda bunu oluşturuyor. View dersem sadece görünüm gözüktüğü sürece anlamına geliyor. 
 
+## Modüller
 
+`@Binds`   `@Provides`
+
++ Interfacelerde karşımıza çıkıyor. 
++ Projemizde örnek olması için bir interface oluşturuyoruz. 
++ Ve bunu kullanacağımız bir sınıf oluşturalım.
+```  
+  class InterfaceImplementor @Inject constructor(): MyInterface 
+```
+
++ Başka bir sınıf oluşturacağım. Bu sınıfımın içerisinde , InterfaceImplementor dediğim sınıf bir constructor injekstiona tabi tutulacak. 
+
+``` 
+class ClassExample
+@Inject constructor(private val myInterfaceImplementor : MyInterface)
+``` 
+
++ Ben burda interfacein kendisini döndürmek istiyorum. 
+
+
+```
+    fun myFunction() : String{
+
+        return "Working ${myInterfaceImplementor.myPrintFunction()}"
+    }
+```
+
++ Arayüzümün içindeki printfunction metodunu InterfaceImplementor classının içerisinde uyguluyorum. Interfaceden direk olarak nesne üretemeyeceğim için bir classa ihtiyaç duyuyorum. Bunu çalıştırdığımızda hata alacağız. Bunun için @Binds ve @Providers kullanmam gerekiyor.
+
+
+### `@Binds`
+
+
+```
+//InstallIn modüllere koymamız gerekiyor.Burdada scope belirtebiliyoruz.Application seviyesinde çağırılacağını söyleyebiliyoruz.
+//ApplicationComponent yaparsak diğer tarafıda Singleton yapmamız lazım.
+
+@InstallIn(ApplicationComponent::class)
+@Module
+abstract class MyModule(){
+      @Singleton
+      @Binds
+      abstract fun bindingFunction(myImplementor: InterfaceImplementor ) : MyInterface
+
+
+}
+```
+
+
+
+
+### `@Provides`
+
+```
+@InstallIn(ApplicationComponent::class)
+@Module
+class myClass(){
+    
+    @Singleton
+    @Provides
+    fun providerFunction() : MyInterface{
+
+        return InterfaceImplementor()
+    }
+
+    //Interface döndüreceğimizi söylüyoruz.
+    //Interface uygulayan bir sınıf döndüreceğiniz söylüyoruz. InterfaceImplementor sınıfından bir nesne.
+
+}
+```
+
++ Provides kullanmanın avantajı : Dış kütüphanelerle çalışırken çok daha kullanışlıdır. Gson gibi.
+
+
+```
+    @Singleton
+    @Provides
+    fun gsonProvides() : Gson{
+        return Gson()
+    }
+```    

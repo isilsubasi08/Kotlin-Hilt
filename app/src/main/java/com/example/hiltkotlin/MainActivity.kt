@@ -13,6 +13,9 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var lars : Musician
 
+    @Inject
+    lateinit var myClass : ClassExample
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         lars.sing()
 
 
+        myClass.myFunction()
 
 
 

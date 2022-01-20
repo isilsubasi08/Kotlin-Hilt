@@ -47,3 +47,26 @@ DI ilkelerini takip ederek ;
     // RX JAVA
     implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
  ```
+
+ ## Hilt Örnek Kullanımı
+
+ 1.Öncelikle Hilt'in kod oluşturmasını tetiklemek için `@HiltAndroidApp` annotation'unu ekleyelim.
+```
+ @HiltAndroidApp
+class MyApplication : Application() {
+}
+```
+
+2.Manifeste gidip Applicationı eklemem gerekiyor.
+```
+    <application
+        android:name=".MyApplication"
+```
+
+3.`@AndroidEntryPoint` , nerde kullanacaksam onun başında bunu eklemem gerekiyor.
+```
+//Giriş noktası, burda enjeksiyonlar yapılacak
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() 
+```
+

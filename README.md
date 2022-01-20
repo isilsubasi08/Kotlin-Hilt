@@ -17,6 +17,33 @@ DI ilkelerini takip ederek ;
 
   <p>Hilt, Jetpack içerisine dahil edilen ve Android uygulamalarda DI için kullanılması önerilen ve Dagger üzerine inşa edilen bir kütüphanedir</p>
 
-  
+  ## Hilt Kullanımı
 
+  Önce proje düzeyindeki `build.gradle` dosyanızı açın ve dependecies bloğunun içine ekleyin.
 
+```
+ def hilt_version = "2.28-alpha"
+ classpath "com.android.tools.build:gradle:7.0.4"
+ classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
+ classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+```
+
+ Plugin kısmına da aşağıdaki id ekleyelim.
+```
+  id 'dagger.hilt.android.plugin'
+ ``` 
+ app gradle 
+```
+    // DAGGER HILT
+    implementation "com.google.dagger:hilt-android:2.35.1"
+    kapt "com.google.dagger:hilt-compiler:2.35.1"
+
+    // RETROFIT
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+
+    // RX JAVA
+    implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
+ ```

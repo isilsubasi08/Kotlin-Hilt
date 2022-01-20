@@ -5,12 +5,14 @@ import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+//Giriş noktası, burda enjeksiyonlar yapılacak
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     //Field Injection
     @Inject
     lateinit var lars : Musician
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,10 @@ class MainActivity : AppCompatActivity() {
          */
 
         lars.sing()
+
+
+
+
 
     }
 }

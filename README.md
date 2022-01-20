@@ -101,3 +101,9 @@ class Instrument @Inject constructor() {
 }
 ```
 
+## Scope
+
++ Oluşturduğumuz enjeksiyonun ne zaman nerede geçerli olacağını söylüyor.
+  +  
+
+

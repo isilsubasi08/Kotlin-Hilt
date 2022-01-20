@@ -104,6 +104,7 @@ class Instrument @Inject constructor() {
 ## Scope
 
 + Oluşturduğumuz enjeksiyonun ne zaman nerede geçerli olacağını söylüyor.
-  +  
+
+![generatedComponent](https://github.com/isilay-subasi/Kotlin-Hilt/blob/main/images/generatedcomponent.PNG) 
 
 
